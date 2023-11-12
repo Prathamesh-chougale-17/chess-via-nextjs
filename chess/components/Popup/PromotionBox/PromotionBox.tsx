@@ -1,10 +1,13 @@
-import { useAppContext } from "../../../contexts/Context";
-import { copyPosition, getNewMoveNotation } from "../../../helper";
+import { useAppContext } from "../../../context/Context";
+import { copyPosition, getNewMoveNotation } from "../../../support/helper";
 import { makeNewMove, clearCandidates } from "../../../reducer/actions/move";
 // import Piece from '../../Pieces/Piece';
 import "./PromotionBox.css";
 
-const PromotionBox = ({ onClosePopup }) => {
+type PromotionBoxProps = {
+  onClosePopup: () => void;
+};
+const PromotionBox = ({ onClosePopup }: PromotionBoxProps) => {
   const { appState, dispatch } = useAppContext();
   const { promotionSquare } = appState;
 
@@ -14,7 +17,7 @@ const PromotionBox = ({ onClosePopup }) => {
   const options = ["q", "r", "b", "n"];
 
   const getPromotionBoxPosition = () => {
-    let style = {};
+    let style: { top?: string; left?: string; right?: string } = {};
 
     if (promotionSquare.x === 7) {
       style.top = "-12.5%";
@@ -33,7 +36,7 @@ const PromotionBox = ({ onClosePopup }) => {
     return style;
   };
 
-  const onClick = (option) => {
+  const onClick = (option: string) => {
     onClosePopup();
     console.log(option);
     const newPosition = copyPosition(

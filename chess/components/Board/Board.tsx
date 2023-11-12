@@ -1,22 +1,32 @@
 // import './Board.css'
-import { useAppContext } from "../../contexts/Context";
+// import { useAppContext } from "../../contexts/Context";
 
-import Ranks from "./bits/Ranks";
-import Files from "./bits/Files";
+import { getKingPosition } from "../../arbiter/getMoves";
+import arbiter from "../../arbiter/arbiter";
+import { useAppContext } from "../../context/Context";
 import Pieces from "../Pieces/Pieces";
-import PromotionBox from "../Popup/PromotionBox/PromotionBox";
+import GameEnds from "../Popup/EndGames/EndGames";
 import Popup from "../Popup/Popup";
-import GameEnds from "../Popup/GameEnds/GameEnds";
+import PromotionBox from "../Popup/PromotionBox/PromotionBox";
+import Ranks from "./Bits/Ranks";
+import Files from "./Bits/Files";
 
-import arbiter from "../../chess/arbiter/arbiter";
-import { getKingPosition } from "../../chess/arbiter/getMoves";
+// import Ranks from "./bits/Ranks";
+// import Files from "./bits/Files";
+// import Pieces from "../Pieces/Pieces";
+// import PromotionBox from "../Popup/PromotionBox/PromotionBox";
+// import Popup from "../Popup/Popup";
+// import GameEnds from "../Popup/GameEnds/GameEnds";
+
+// import arbiter from "../../chess/arbiter/arbiter";
+// import { getKingPosition } from "../../chess/arbiter/getMoves";
 
 const Board = () => {
   const ranks = Array(8)
-    .fill()
+    .fill(null)
     .map((x, i) => 8 - i);
   const files = Array(8)
-    .fill()
+    .fill(null)
     .map((x, i) => i + 1);
 
   const { appState } = useAppContext();
@@ -24,19 +34,22 @@ const Board = () => {
 
   const checkTile = (() => {
     const isInCheck = arbiter.isPlayerInCheck({
-      positionAfterMove: position,
+      position: [position],
+      positionAfterMove: [position],
       player: appState.turn,
     });
 
-    if (isInCheck) return getKingPosition(position, appState.turn);
+    if (isInCheck) return getKingPosition([position], appState.turn);
 
     return null;
   })();
 
-  const getClassName = (i, j) => {
+  const getClassName = (i: number, j: number) => {
     let c = "tile";
     c += (i + j) % 2 === 0 ? " tile--dark " : " tile--light ";
-    if (appState.candidateMoves?.find((m) => m[0] === i && m[1] === j)) {
+    if (
+      appState.candidateMoves?.find((m: number[]) => m[0] === i && m[1] === j)
+    ) {
       if (position[i][j]) c += " attacking";
       else c += " highlight";
     }
@@ -57,8 +70,8 @@ const Board = () => {
           files.map((file, j) => (
             <div
               key={file + "" + rank}
-              i={i}
-              j={j}
+              // i={i}
+              // j={j}
               className={`${getClassName(7 - i, j)}`}
             ></div>
           ))
@@ -68,8 +81,8 @@ const Board = () => {
       <Pieces />
 
       <Popup>
-        <PromotionBox />
-        <GameEnds />
+        <PromotionBox onClosePopup={() => {}} />
+        <GameEnds onClosePopup={undefined} />
       </Popup>
 
       <Files files={files} />
