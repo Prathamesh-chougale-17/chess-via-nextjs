@@ -1,7 +1,8 @@
 import arbiter from "./arbiter"
+import { getCastlingDirectionsProps, getCastlingMovesProps, getPawnCapturesProps, movePieceProps } from "./piecesProps"
 
-export const getRookMoves = ({ position, piece, rank, file }) => {
-    const moves = []
+export const getRookMoves = ({ position, piece, rank, file }: movePieceProps) => {
+    const moves: [number, number][] = []
     const us = piece[0]
     const enemy = us === 'w' ? 'b' : 'w'
 
@@ -32,8 +33,8 @@ export const getRookMoves = ({ position, piece, rank, file }) => {
     return moves
 }
 
-export const getKnightMoves = ({ position, rank, file }) => {
-    const moves = []
+export const getKnightMoves = ({ position, rank, file }: movePieceProps) => {
+    const moves: [number, number][] = []
     const enemy = position[rank][file].startsWith('w') ? 'b' : 'w'
 
     const candidates = [
@@ -55,8 +56,8 @@ export const getKnightMoves = ({ position, rank, file }) => {
     return moves
 }
 
-export const getBishopMoves = ({ position, piece, rank, file }) => {
-    const moves = []
+export const getBishopMoves = ({ position, piece, rank, file }: movePieceProps) => {
+    const moves: [number, number][] = []
     const us = piece[0]
     const enemy = us === 'w' ? 'b' : 'w'
 
@@ -86,7 +87,7 @@ export const getBishopMoves = ({ position, piece, rank, file }) => {
     return moves
 }
 
-export const getQueenMoves = ({ position, piece, rank, file }) => {
+export const getQueenMoves = ({ position, piece, rank, file }: movePieceProps) => {
     const moves = [
         ...getBishopMoves({ position, piece, rank, file }),
         ...getRookMoves({ position, piece, rank, file })
@@ -95,8 +96,8 @@ export const getQueenMoves = ({ position, piece, rank, file }) => {
     return moves
 }
 
-export const getKingMoves = ({ position, piece, rank, file }) => {
-    let moves = []
+export const getKingMoves = ({ position, piece, rank, file }: movePieceProps) => {
+    let moves: [number, number][] = []
     const us = piece[0]
     const direction = [
         [1, -1], [1, 0], [1, 1],
@@ -113,9 +114,9 @@ export const getKingMoves = ({ position, piece, rank, file }) => {
     return moves
 }
 
-export const getPawnMoves = ({ position, piece, rank, file }) => {
+export const getPawnMoves = ({ position, piece, rank, file }: movePieceProps) => {
 
-    const moves = []
+    const moves: [number, number][] = []
     const dir = piece === 'wp' ? 1 : -1
 
     // Move two tiles on first move
@@ -133,9 +134,9 @@ export const getPawnMoves = ({ position, piece, rank, file }) => {
     return moves
 }
 
-export const getPawnCaptures = ({ position, prevPosition, piece, rank, file }) => {
+export const getPawnCaptures = ({ position, prevPosition, piece, rank, file }: getPawnCapturesProps) => {
 
-    const moves = []
+    const moves: [number, number][] = []
     const dir = piece === 'wp' ? 1 : -1
     const enemy = piece[0] === 'w' ? 'b' : 'w'
 
@@ -170,8 +171,8 @@ export const getPawnCaptures = ({ position, prevPosition, piece, rank, file }) =
     return moves
 }
 
-export const getCastlingMoves = ({ position, castleDirection, piece, rank, file }) => {
-    const moves = []
+export const getCastlingMoves = ({ position, castleDirection, piece, rank, file }: getCastlingMovesProps) => {
+    const moves: [number, number][] = []
 
     if (file !== 4 || rank % 7 !== 0 || castleDirection === 'none') {
         return moves
@@ -180,6 +181,7 @@ export const getCastlingMoves = ({ position, castleDirection, piece, rank, file 
 
         if (arbiter.isPlayerInCheck({
             positionAfterMove: position,
+            position: position,
             player: 'w'
         }))
             return moves
@@ -191,10 +193,12 @@ export const getCastlingMoves = ({ position, castleDirection, piece, rank, file 
             position[0][0] === 'wr' &&
             !arbiter.isPlayerInCheck({
                 positionAfterMove: arbiter.performMove({ position, piece, rank, file, x: 0, y: 3 }),
+                position: position,
                 player: 'w'
             }) &&
             !arbiter.isPlayerInCheck({
                 positionAfterMove: arbiter.performMove({ position, piece, rank, file, x: 0, y: 2 }),
+                position: position,
                 player: 'w'
             })) {
             moves.push([0, 2])
@@ -205,10 +209,12 @@ export const getCastlingMoves = ({ position, castleDirection, piece, rank, file 
             position[0][7] === 'wr' &&
             !arbiter.isPlayerInCheck({
                 positionAfterMove: arbiter.performMove({ position, piece, rank, file, x: 0, y: 5 }),
+                position: position,
                 player: 'w'
             }) &&
             !arbiter.isPlayerInCheck({
                 positionAfterMove: arbiter.performMove({ position, piece, rank, file, x: 0, y: 6 }),
+                position: position,
                 player: 'w'
             })) {
             moves.push([0, 6])
@@ -217,6 +223,7 @@ export const getCastlingMoves = ({ position, castleDirection, piece, rank, file 
     else {
         if (arbiter.isPlayerInCheck({
             positionAfterMove: position,
+            position: position,
             player: 'b'
         }))
             return moves
@@ -260,7 +267,7 @@ export const getCastlingMoves = ({ position, castleDirection, piece, rank, file 
 
 }
 
-export const getCastlingDirections = ({ castleDirection, piece, file, rank }) => {
+export const getCastlingDirections = ({ castleDirection, piece, file, rank }: getCastlingDirectionsProps) => {
     file = Number(file)
     rank = Number(rank)
     const direction = castleDirection[piece[0]]
@@ -293,8 +300,8 @@ export const getCastlingDirections = ({ castleDirection, piece, file, rank }) =>
     }
 }
 
-export const getPieces = (position, enemy) => {
-    const enemyPieces = []
+export const getPieces = (position: string[][], enemy: string) => {
+    const enemyPieces: { piece: string, rank: number, file: number }[] = []
     position.forEach((rank, x) => {
         rank.forEach((file, y) => {
             if (position[x][y].startsWith(enemy))
@@ -308,7 +315,7 @@ export const getPieces = (position, enemy) => {
     return enemyPieces
 }
 
-export const getKingPosition = (position, player) => {
+export const getKingPosition = (position: string[][], player: string) => {
     let kingPos
     position.forEach((rank, x) => {
         rank.forEach((file, y) => {

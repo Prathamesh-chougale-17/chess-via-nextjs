@@ -1,12 +1,13 @@
 import { areSameColorTiles, findPieceCoords } from '../helper';
 import { getKnightMoves, getRookMoves, getBishopMoves, getQueenMoves, getKingMoves, getPawnMoves, getPawnCaptures, getCastlingMoves, getPieces, getKingPosition } from './getMoves'
 import { movePiece, movePawn } from './move';
+import { getRegularMovesProps, isPlayerInCheckProps, movePieceProps } from './piecesProps';
 
 const arbiter = {
 
-    getRegularMoves: function ({ position, piece, rank, file }) {
+    getRegularMoves: function ({ position, piece, rank, file }: movePieceProps) {
         if (piece.endsWith('n'))
-            return getKnightMoves({ position, rank, file });
+            return getKnightMoves({ position, piece: '', rank, file });
         if (piece.endsWith('b'))
             return getBishopMoves({ position, piece, rank, file });
         if (piece.endsWith('r'))
@@ -19,9 +20,9 @@ const arbiter = {
             return getPawnMoves({ position, piece, rank, file })
     },
 
-    getValidMoves: function ({ position, castleDirection, prevPosition, piece, rank, file }) {
-        let moves = this.getRegularMoves({ position, piece, rank, file })
-        const notInCheckMoves = []
+    getValidMoves: function ({ position, castleDirection, prevPosition, piece, rank, file }: getRegularMovesProps) {
+        let moves: [number, number][] = this.getRegularMoves({ position, piece, rank, file }) || []
+        const notInCheckMoves: [number, number][] = []
 
         if (piece.endsWith('p')) {
             moves = [
@@ -46,12 +47,12 @@ const arbiter = {
         return notInCheckMoves
     },
 
-    isPlayerInCheck: function ({ positionAfterMove, position, player }) {
+    isPlayerInCheck: function ({ positionAfterMove, position, player }: isPlayerInCheckProps) {
         const enemy = player.startsWith('w') ? 'b' : 'w'
         let kingPos = getKingPosition(positionAfterMove, player)
         const enemyPieces = getPieces(positionAfterMove, enemy)
 
-        const enemyMoves = enemyPieces.reduce((acc, p) => acc = [
+        const enemyMoves = enemyPieces.reduce((acc: [number, number][], p) => acc = [
             ...acc,
             ...(p.piece.endsWith('p')
                 ? getPawnCaptures({

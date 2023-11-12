@@ -1,8 +1,9 @@
-import { copyPosition } from "../helper"
+import { copyPosition } from "../support/helper"
+import { MoveComplexPieceProps } from "./piecesProps"
 
-export const movePiece = ({ position, piece, rank, file, x, y }) => {
+export const movePiece = ({ position, piece, rank, file, x, y }: MoveComplexPieceProps) => {
 
-    const newPosition = copyPosition(position)
+    const newPosition: string[][] = copyPosition(position)
 
     if (piece.endsWith('k') && Math.abs(y - file) > 1) { // Castles
         if (y === 2) { // Castles Long
@@ -20,8 +21,8 @@ export const movePiece = ({ position, piece, rank, file, x, y }) => {
     return newPosition
 }
 
-export const movePawn = ({ position, piece, rank, file, x, y }) => {
-    const newPosition = copyPosition(position)
+export const movePawn = ({ position, piece, rank, file, x, y }: MoveComplexPieceProps) => {
+    const newPosition: string[][] = copyPosition(position)
 
     // EnPassant, looks like capturing an empty cell
     // Detect and delete the pawn to be removed

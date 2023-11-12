@@ -8,8 +8,8 @@ import PromotionBox from "../Popup/PromotionBox/PromotionBox";
 import Popup from "../Popup/Popup";
 import GameEnds from "../Popup/GameEnds/GameEnds";
 
-import arbiter from "../../arbiter/arbiter";
-import { getKingPosition } from "../../arbiter/getMoves";
+import arbiter from "../../chess/arbiter/arbiter";
+import { getKingPosition } from "../../chess/arbiter/getMoves";
 
 const Board = () => {
   const ranks = Array(8)

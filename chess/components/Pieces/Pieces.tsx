@@ -3,7 +3,7 @@ import Piece from "./Piece";
 import { useRef } from "react";
 import { useAppContext } from "../../contexts/Context";
 import { openPromotion } from "../../reducer/actions/popup";
-import { getCastlingDirections } from "../../arbiter/getMoves";
+import { getCastlingDirections } from "../../chess/arbiter/getMoves";
 import {
   updateCastling,
   detectStalemate,
@@ -12,7 +12,7 @@ import {
 } from "../../reducer/actions/game";
 
 import { makeNewMove, clearCandidates } from "../../reducer/actions/move";
-import arbiter from "../../arbiter/arbiter";
+import arbiter from "../../chess/arbiter/arbiter";
 import { getNewMoveNotation } from "../../helper";
 
 const Pieces = () => {
