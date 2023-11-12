@@ -1,5 +1,3 @@
-import exp from "constants";
-
 export interface MoveComplexPieceProps {
     position: string[][];
     piece: string;
@@ -54,6 +52,14 @@ export interface isPlayerInCheckProps {
     player: string
 }
 
+export interface performMoveProps {
+    position: string[][],
+    piece: string,
+    rank: number,
+    file: number,
+    x: number,
+    y: number
+}
 /*
 
     castleDirection: any;

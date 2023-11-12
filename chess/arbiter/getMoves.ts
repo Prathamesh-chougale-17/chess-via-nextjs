@@ -316,7 +316,7 @@ export const getPieces = (position: string[][], enemy: string) => {
 }
 
 export const getKingPosition = (position: string[][], player: string) => {
-    let kingPos
+    let kingPos: [number, number] = [0, 0]
     position.forEach((rank, x) => {
         rank.forEach((file, y) => {
             if (position[x][y].startsWith(player) && position[x][y].endsWith('k'))

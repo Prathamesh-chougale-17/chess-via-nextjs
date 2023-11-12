@@ -1,7 +1,7 @@
-import { areSameColorTiles, findPieceCoords } from '../helper';
+import { areSameColorTiles, findPieceCoords } from '../support/helper';
 import { getKnightMoves, getRookMoves, getBishopMoves, getQueenMoves, getKingMoves, getPawnMoves, getPawnCaptures, getCastlingMoves, getPieces, getKingPosition } from './getMoves'
 import { movePiece, movePawn } from './move';
-import { getRegularMovesProps, isPlayerInCheckProps, movePieceProps } from './piecesProps';
+import { getRegularMovesProps, isPlayerInCheckProps, movePieceProps, performMoveProps } from './piecesProps';
 
 const arbiter = {
 
@@ -64,7 +64,7 @@ const arbiter = {
                     position: positionAfterMove,
                     ...p
                 })
-            )
+            ) || []
         ], [])
 
         if (enemyMoves.some(([x, y]) => kingPos[0] === x && kingPos[1] === y))
@@ -74,24 +74,25 @@ const arbiter = {
             return false
     },
 
-    performMove: function ({ position, piece, rank, file, x, y }) {
+    performMove: function ({ position, piece, rank, file, x, y }: performMoveProps) {
         if (piece.endsWith('p'))
             return movePawn({ position, piece, rank, file, x, y })
         else
             return movePiece({ position, piece, rank, file, x, y })
     },
 
-    isStalemate: function (position, player, castleDirection) {
-        const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, player })
+    isStalemate: function (position: string[][], player: string, castleDirection: 'right' | 'left' | 'none') {
+        const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, position, player })
 
         if (isInCheck)
             return false
 
         const pieces = getPieces(position, player)
-        const moves = pieces.reduce((acc, p) => acc = [
+        const moves = pieces.reduce((acc: [number, number][], p) => acc = [
             ...acc,
             ...(this.getValidMoves({
                 position,
+                prevPosition: position,//extra
                 castleDirection,
                 ...p
             })
@@ -101,7 +102,7 @@ const arbiter = {
         return (!isInCheck && moves.length === 0)
     },
 
-    insufficientMaterial: function (position) {
+    insufficientMaterial: function (position: string[][]) {
 
         const pieces =
             position.reduce((acc, rank) =>
@@ -133,18 +134,19 @@ const arbiter = {
         return false
     },
 
-    isCheckMate: function (position, player, castleDirection) {
-        const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, player })
+    isCheckMate: function (position: string[][], player: string, castleDirection: 'right' | 'left' | 'none') {
+        const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, position, player })
 
         if (!isInCheck)
             return false
 
         const pieces = getPieces(position, player)
-        const moves = pieces.reduce((acc, p) => acc = [
+        const moves = pieces.reduce((acc: [number, number][], p) => acc = [
             ...acc,
             ...(this.getValidMoves({
                 position,
                 castleDirection,
+                prevPosition: position,//extra
                 ...p
             })
             )
