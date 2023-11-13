@@ -1,4 +1,6 @@
-export const getCharacter = file => String.fromCharCode(file + 96)
+import { getNewMoveNotationProps } from "../arbiter/piecesProps"
+
+export const getCharacter = (file: number) => String.fromCharCode(file + 96)
 export const createPosition = () => {
 
     const position = new Array(8).fill('').map(x => new Array(8).fill(''))
@@ -31,7 +33,7 @@ export const createPosition = () => {
     return position
 }
 
-export const copyPosition = position => {
+export const copyPosition = (position: string[][]) => {
     const newPosition =
         new Array(8).fill('').map(x => new Array(8).fill(''))
 
@@ -44,12 +46,12 @@ export const copyPosition = position => {
     return newPosition
 }
 
-export const areSameColorTiles = (coords1, coords2) =>
+export const areSameColorTiles = (coords1: { x: number, y: number }, coords2: { x: number, y: number }) =>
     (coords1.x + coords1.y) % 2 === (coords2.x + coords2.y)
 
 
-export const findPieceCoords = (position, type) => {
-    let results = []
+export const findPieceCoords = (position: string[][], type: string) => {
+    let results: { x: number, y: number }[] = []
     position.forEach((rank, i) => {
         rank.forEach((pos, j) => {
             if (pos === type)
@@ -59,7 +61,7 @@ export const findPieceCoords = (position, type) => {
     return results
 }
 
-export const getNewMoveNotation = ({ piece, rank, file, x, y, position, promotesTo }) => {
+export const getNewMoveNotation = ({ piece, rank, file, x, y, position, promotesTo }: getNewMoveNotationProps) => {
     let note = ''
     if (rank && file) {
 

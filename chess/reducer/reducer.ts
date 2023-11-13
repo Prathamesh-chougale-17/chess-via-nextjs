@@ -1,6 +1,6 @@
-import { Status } from "../constants";
+import { Status } from "../support/constants";
 import actionTypes from "./actionTypes";
-export const reducer = (state, action) => {
+export const reducer = (state: any, action: any) => {
 
     switch (action.type) {
         case actionTypes.NEW_MOVE: {

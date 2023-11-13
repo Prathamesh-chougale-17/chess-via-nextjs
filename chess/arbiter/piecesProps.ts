@@ -77,6 +77,16 @@ export interface makeNewMoveProps {
 export interface generateCandidatesProps {
     candidateMoves: string[]//expimental
 }
+
+export interface getNewMoveNotationProps {
+    piece: string,
+    rank: number,
+    file: number,
+    x: number,
+    y: number,
+    position: string[][],
+    promotesTo: string
+}
 /*
 
     castleDirection: any;

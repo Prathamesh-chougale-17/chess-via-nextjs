@@ -1,7 +1,7 @@
 import actionTypes from '../actionTypes';
-import { initGameState } from '../../constants';
+import { initGameState } from '../../support/constants';
 
-export const updateCastling = (direction) => {
+export const updateCastling = (direction: string) => {
     return {
         type: actionTypes.CAN_CASTLE,
         payload: direction,
@@ -20,7 +20,7 @@ export const detectInsufficientMaterial = () => {
     }
 }
 
-export const detectCheckmate = winner => {
+export const detectCheckmate = (winner: string) => {
     return {
         type: actionTypes.WIN,
         payload: winner
