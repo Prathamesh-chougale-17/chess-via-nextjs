@@ -2,8 +2,6 @@ import { useAppContext } from "../../../context/Context";
 import { copyPosition, getNewMoveNotation } from "../../../support/helper";
 import { makeNewMove, clearCandidates } from "../../../reducer/actions/move";
 // import Piece from '../../Pieces/Piece';
-import "./PromotionBox.css";
-
 type PromotionBoxProps = {
   onClosePopup: () => void;
 };

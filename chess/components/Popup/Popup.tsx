@@ -2,8 +2,6 @@ import React, { ReactNode } from "react";
 import { Status } from "../../support/constants";
 import { useAppContext } from "../../context/Context";
 import { closePopup } from "../../reducer/actions/popup";
-import "./Popup.css";
-
 const Popup = ({ children }: { children: ReactNode }) => {
   const {
     appState: { status },

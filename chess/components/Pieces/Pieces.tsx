@@ -1,3 +1,4 @@
+"use client";
 import Piece from "./Piece";
 import { useRef } from "react";
 import { useAppContext } from "../../context/Context";

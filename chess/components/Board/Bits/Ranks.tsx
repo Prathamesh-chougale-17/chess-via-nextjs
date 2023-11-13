@@ -1,8 +1,7 @@
 import { RanksProps } from "../../../arbiter/piecesProps";
-import "./Ranks.css";
-
+import rankstyle from "./rank.module.css";
 const Ranks = ({ ranks }: RanksProps) => (
-  <div className="ranks">
+  <div className={rankstyle.ranks}>
     {ranks.map((rank) => (
       <span key={rank}>{rank}</span>
     ))}

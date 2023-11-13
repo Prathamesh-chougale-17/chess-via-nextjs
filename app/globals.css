@@ -6,6 +6,12 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --tile-size : 100px;
+  --light-tile : #F0D8B6;
+  --dark-tile : #B48764;
+  --bg-color : #202020;
+  --highlight : rgba(0,0,0,.1);
+  --check : #FEEC48;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,9 +19,11 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --tile-size : 50px;
+
   }
 }
-
+/* 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +32,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
