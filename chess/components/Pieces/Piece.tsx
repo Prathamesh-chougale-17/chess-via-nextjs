@@ -1,3 +1,4 @@
+import "./Pieces.css";
 import arbiter from "../../arbiter/arbiter";
 import { useAppContext } from "../../context/Context";
 import { generateCandidates } from "../../reducer/actions/move";

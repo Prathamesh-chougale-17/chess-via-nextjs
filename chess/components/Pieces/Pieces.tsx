@@ -1,4 +1,5 @@
 "use client";
+import "./Pieces.css";
 import Piece from "./Piece";
 import { useRef } from "react";
 import { useAppContext } from "../../context/Context";
