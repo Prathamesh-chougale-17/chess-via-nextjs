@@ -60,6 +60,14 @@ export interface performMoveProps {
     x: number,
     y: number
 }
+
+export interface RanksProps {
+    ranks: number[];
+}
+
+export interface FilesProps {
+    files: number[];
+}
 /*
 
     castleDirection: any;

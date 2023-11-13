@@ -1,7 +1,8 @@
 import "./Files.css";
-import { getCharacter } from "../../../helper";
+import { getCharacter } from "../../../support/helper";
+import { FilesProps } from "@/chess/arbiter/piecesProps";
 
-const Files = ({ files }) => (
+const Files = ({ files }: FilesProps) => (
   <div className="files">
     {files.map((file) => (
       <span key={file}>{getCharacter(file)}</span>
