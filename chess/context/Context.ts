@@ -1,16 +1,18 @@
 import { createContext, useContext } from 'react';
 interface AppState {
     appState: {
-        candidateMoves: any;
+        candidateMoves: number[][];
         promotionSquare: {
             x: number
             y: number
             rank: number
             file: number
         }
-        position: string[][];
+        position: string[][][];
         selectedPiece: any
         turn: string
+        movesList: string[]
+        castleDirection: { [key: string]: string }
     }; // add an appState property
     dispatch: (e: any) => void; // add a dispatch property
 }

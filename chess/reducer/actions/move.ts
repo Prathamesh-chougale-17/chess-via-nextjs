@@ -1,6 +1,7 @@
+import { generateCandidatesProps, makeNewMoveProps } from '../../arbiter/piecesProps';
 import actionTypes from '../actionTypes';
 
-export const makeNewMove = ({ newPosition, newMove }) => {
+export const makeNewMove = ({ newPosition, newMove }: makeNewMoveProps) => {
     return {
         type: actionTypes.NEW_MOVE,
         payload: { newPosition, newMove },
@@ -13,7 +14,7 @@ export const clearCandidates = () => {
     }
 }
 
-export const generateCandidates = ({ candidateMoves }) => {
+export const generateCandidates = ({ candidateMoves }: generateCandidatesProps) => {
     return {
         type: actionTypes.GENERATE_CANDIDATE_MOVES,
         payload: { candidateMoves }

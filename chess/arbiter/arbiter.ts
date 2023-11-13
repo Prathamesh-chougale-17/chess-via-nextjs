@@ -81,7 +81,7 @@ const arbiter = {
             return movePiece({ position, piece, rank, file, x, y })
     },
 
-    isStalemate: function (position: string[][], player: string, castleDirection: 'right' | 'left' | 'none') {
+    isStalemate: function (position: string[][], player: string, castleDirection: string) {
         const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, position, player })
 
         if (isInCheck)
@@ -134,7 +134,7 @@ const arbiter = {
         return false
     },
 
-    isCheckMate: function (position: string[][], player: string, castleDirection: 'right' | 'left' | 'none') {
+    isCheckMate: function (position: string[][], player: string, castleDirection: string) {
         const isInCheck = this.isPlayerInCheck({ positionAfterMove: position, position, player })
 
         if (!isInCheck)

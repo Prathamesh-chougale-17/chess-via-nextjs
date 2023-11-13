@@ -34,12 +34,12 @@ const Board = () => {
 
   const checkTile = (() => {
     const isInCheck = arbiter.isPlayerInCheck({
-      position: [position],
-      positionAfterMove: [position],
+      position: position,
+      positionAfterMove: position,
       player: appState.turn,
     });
 
-    if (isInCheck) return getKingPosition([position], appState.turn);
+    if (isInCheck) return getKingPosition(position, appState.turn);
 
     return null;
   })();

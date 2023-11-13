@@ -1,9 +1,8 @@
-import "./Pieces.css";
 import Piece from "./Piece";
 import { useRef } from "react";
-import { useAppContext } from "../../contexts/Context";
+import { useAppContext } from "../../context/Context";
 import { openPromotion } from "../../reducer/actions/popup";
-import { getCastlingDirections } from "../../chess/arbiter/getMoves";
+import { getCastlingDirections } from "../../arbiter/getMoves";
 import {
   updateCastling,
   detectStalemate,
@@ -12,16 +11,17 @@ import {
 } from "../../reducer/actions/game";
 
 import { makeNewMove, clearCandidates } from "../../reducer/actions/move";
-import arbiter from "../../chess/arbiter/arbiter";
-import { getNewMoveNotation } from "../../helper";
+import arbiter from "../../arbiter/arbiter";
+import { getNewMoveNotation } from "../../support/helper";
 
 const Pieces = () => {
   const { appState, dispatch } = useAppContext();
-  const currentPosition = appState.position[appState.position.length - 1];
+  const currentPosition: string[][] =
+    appState.position[appState.position.length - 1];
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
-  const updateCastlingState = ({ piece, file, rank }) => {
+  const updateCastlingState = ({ piece, file, rank }: any) => {
     const direction = getCastlingDirections({
       castleDirection: appState.castleDirection,
       piece,
@@ -33,7 +33,7 @@ const Pieces = () => {
     }
   };
 
-  const openPromotionBox = ({ rank, file, x, y }) => {
+  const openPromotionBox = ({ rank, file, x, y }: any) => {
     dispatch(
       openPromotion({
         rank: Number(rank),
@@ -44,8 +44,8 @@ const Pieces = () => {
     );
   };
 
-  const calculateCoords = (e) => {
-    const { top, left, width } = ref.current.getBoundingClientRect();
+  const calculateCoords = (e: any) => {
+    const { top, left, width } = ref.current!.getBoundingClientRect();
     const size = width / 8;
     const y = Math.floor((e.clientX - left) / size);
     const x = 7 - Math.floor((e.clientY - top) / size);
@@ -53,7 +53,7 @@ const Pieces = () => {
     return { x, y };
   };
 
-  const move = (e) => {
+  const move = (e: any) => {
     const { x, y } = calculateCoords(e);
     const [piece, rank, file] = e.dataTransfer.getData("text").split(",");
 
@@ -86,6 +86,7 @@ const Pieces = () => {
         x,
         y,
         position: currentPosition,
+        promotesTo: "",
       });
       dispatch(makeNewMove({ newPosition, newMove }));
 
@@ -100,13 +101,13 @@ const Pieces = () => {
     dispatch(clearCandidates());
   };
 
-  const onDrop = (e) => {
+  const onDrop = (e: any) => {
     e.preventDefault();
 
     move(e);
   };
 
-  const onDragOver = (e) => {
+  const onDragOver = (e: any) => {
     e.preventDefault();
   };
 

@@ -1,4 +1,4 @@
-import { RanksProps } from "@/chess/arbiter/piecesProps";
+import { RanksProps } from "../../../arbiter/piecesProps";
 import "./Ranks.css";
 
 const Ranks = ({ ranks }: RanksProps) => (

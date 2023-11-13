@@ -1,5 +1,5 @@
-import { useAppContext } from "@/context/Context";
-import { takeBack } from "@/reducer/actions";
+import { useAppContext } from "../../../context/Context";
+import { takeBack } from "../../../reducer/actions/move";
 
 const TakeBack = () => {
   const { dispatch } = useAppContext();

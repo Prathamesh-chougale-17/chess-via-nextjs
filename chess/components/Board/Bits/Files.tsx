@@ -1,6 +1,6 @@
 import "./Files.css";
 import { getCharacter } from "../../../support/helper";
-import { FilesProps } from "@/chess/arbiter/piecesProps";
+import { FilesProps } from "../../../arbiter/piecesProps";
 
 const Files = ({ files }: FilesProps) => (
   <div className="files">

@@ -24,14 +24,14 @@ export interface getPawnCapturesProps {
 
 export interface getCastlingMovesProps {
     position: string[][],
-    castleDirection: 'right' | 'left' | 'none',
+    castleDirection: string,
     piece: string,
     rank: number,
     file: number
 }
 
 export interface getCastlingDirectionsProps {
-    castleDirection: { [key: string]: string },
+    castleDirection: { [key: string]: string }
     piece: string,
     rank: number,
     file: number
@@ -39,7 +39,7 @@ export interface getCastlingDirectionsProps {
 
 export interface getRegularMovesProps {
     position: string[][],
-    castleDirection: 'right' | 'left' | 'none',
+    castleDirection: string,
     prevPosition: string[][],
     piece: string,
     rank: number,
@@ -67,6 +67,15 @@ export interface RanksProps {
 
 export interface FilesProps {
     files: number[];
+}
+
+export interface makeNewMoveProps {
+    newPosition: string[][],
+    newMove: string
+}
+
+export interface generateCandidatesProps {
+    candidateMoves: string[]//expimental
 }
 /*
 
