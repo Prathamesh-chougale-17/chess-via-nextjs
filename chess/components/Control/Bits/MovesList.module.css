@@ -1,0 +1,6 @@
+.moves[data-number]:nth-child(odd)::before {
+    content: attr(data-number);
+    position: absolute;
+    left: 0;
+    opacity: 0.5;
+}

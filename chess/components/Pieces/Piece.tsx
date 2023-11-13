@@ -19,9 +19,7 @@ const Piece = ({ rank, file, piece }: any) => {
         .getValidMoves({
           position: currentPosition[currentPosition.length - 1],
           prevPosition: currentPosition[currentPosition.length - 2],
-          castleDirection: castleDirection[
-            turn as keyof typeof castleDirection
-          ] as "right" | "left" | "none",
+          castleDirection: castleDirection[turn],
           piece,
           file,
           rank,

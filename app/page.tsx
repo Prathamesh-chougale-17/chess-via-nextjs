@@ -17,7 +17,7 @@ export default function Home() {
   };
   return (
     <AppContext.Provider value={providerState}>
-      <div className="grid place-content-center h-full bg-slate-600">
+      <div className="App">
         <Board />
         <Control>
           <MovesList />

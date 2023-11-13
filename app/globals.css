@@ -21,6 +21,15 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+.App {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background: var(--bg-color);
+  grid-template-columns: auto 220px;
+
+}
 /* 
 body {
   color: rgb(var(--foreground-rgb));
