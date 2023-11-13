@@ -1,9 +1,9 @@
-import { Status } from "../../../constants";
-import { useAppContext } from "../../../contexts/Context";
+import { Status } from "../../../support/constants";
+import { useAppContext } from "../../../context/Context";
 import { setupNewGame } from "../../../reducer/actions/game";
 import "./GameEnds.css";
 
-const GameEnds = ({ onClosePopup }) => {
+const GameEnds = ({ onClosePopup }: any) => {
   const {
     appState: { status },
     dispatch,

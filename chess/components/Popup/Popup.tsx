@@ -1,10 +1,10 @@
-import React from "react";
-import { Status } from "../../constants";
-import { useAppContext } from "../../contexts/Context";
+import React, { ReactNode } from "react";
+import { Status } from "../../support/constants";
+import { useAppContext } from "../../context/Context";
 import { closePopup } from "../../reducer/actions/popup";
 import "./Popup.css";
 
-const Popup = ({ children }) => {
+const Popup = ({ children }: { children: ReactNode }) => {
   const {
     appState: { status },
     dispatch,
@@ -18,7 +18,7 @@ const Popup = ({ children }) => {
 
   return (
     <div className="popup">
-      {React.Children.toArray(children).map((child) =>
+      {React.Children.toArray(children).map((child: any) =>
         React.cloneElement(child, { onClosePopup })
       )}
     </div>

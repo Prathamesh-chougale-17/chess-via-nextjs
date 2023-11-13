@@ -13,6 +13,7 @@ interface AppState {
         turn: string
         movesList: string[]
         castleDirection: { [key: string]: string }
+        status: string
     }; // add an appState property
     dispatch: (e: any) => void; // add a dispatch property
 }
