@@ -18,3 +18,36 @@
     position: relative;
     background-color: #B48764;
 }
+/* .highlight:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width : 20px;
+    height : 20px;
+    background: rgba(0,0,0,.1);
+    border-radius: 50%;
+    left: 25%;
+    top: 25%;
+}
+.attacking:after {
+    display: block;
+    position: absolute;
+    content: '';
+    border: 6px solid rgba(0,0,0,.1);
+    width : 88px;
+    height : 88px;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+}
+.checked:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width :  100px;
+    height :  100px;
+    background: #FEEC48;
+    border-radius: 20px;
+    left: 0;
+    top: 0;
+} */

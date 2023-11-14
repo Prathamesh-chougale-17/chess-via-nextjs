@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: row;
     color: var(--dark-tile  );
-    flex: 1 1 0%;
+    flex: 1 1;
     flex-wrap: wrap;
-    flex: start;
+    align-content: flex-start;
     overflow: auto;
     font-size: 1.1em;
+
 }
 
 .moves{
