@@ -38,7 +38,6 @@ const PromotionBox = ({ onClosePopup }: PromotionBoxProps) => {
 
   const onClick = (option: string) => {
     onClosePopup();
-    console.log(option);
     const newPosition = copyPosition(
       appState.position[appState.position.length - 1]
     );

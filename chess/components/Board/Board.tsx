@@ -67,7 +67,7 @@ const Board = () => {
 
       <Popup>
         <PromotionBox onClosePopup={() => {}} />
-        <GameEnds onClosePopup={undefined} />
+        <GameEnds />
       </Popup>
 
       <Files files={files} />
