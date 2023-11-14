@@ -22,7 +22,9 @@ const GameEnds = ({ onClosePopup }: any) => {
       <h1>{isWin ? status : "Draw"}</h1>
       <p>{!isWin && status}</p>
       <div className={`${status}`} />
-      <button onClick={newGame}>New Game</button>
+      <button className="endgamebutton" onClick={newGame}>
+        New Game
+      </button>
     </div>
   );
 };

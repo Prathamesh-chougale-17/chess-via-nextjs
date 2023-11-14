@@ -13,3 +13,12 @@
     background-position: 35% center,65% center;
     background-image: url('../../../assets/wk.png'),url('../../../assets/bk.png')
 }
+
+.endgamebutton {
+    background: var(--dark-tile);
+    color: var(--light-tile);
+    border: 0 none;
+    padding: 10px 30px;
+    margin: 10px;
+    font-size: 1.1em;
+} 

@@ -9,7 +9,15 @@
     font-size: 1.1em;
 
 }
-
+.moveslist::-webkit-scrollbar {
+    display: none;
+}
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.moveslist {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
 .moves{
     flex-basis: 35%;
     padding-left: 15%;

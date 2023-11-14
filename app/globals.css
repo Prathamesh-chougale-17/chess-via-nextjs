@@ -25,22 +25,23 @@
 .App {
   display: grid;
   place-content: center;
-  height: 100vh;
-  background: var(--bg-color);
+  margin-top: 100px;
+  margin-bottom: 100px;
+  height: 100%;
   grid-template-columns: auto 220px;
 }
 
-.no-scrollbar::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
+body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
  
-/* 
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -49,4 +50,4 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-} */
+}
