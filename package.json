@@ -1,15 +1,30 @@
 {
-  "name": "chess2",
-  "version": "0.1.0",
-  "private": true,
+  "name": "validchessboard",
+  "version": "0.1.2",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prathamesh-chougale-17/chess-via-nextjs"
+  },
+  "keywords": [
+    "chess",
+    "nextjs",
+    "typescript",
+    "tailwindcss"
+  ],
+  "author": {
+    "name": "Prathamesh Chougale",
+    "email": "prathamesh17170@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
-    "next": "14.0.2",
+    "next": "^14.0.2",
     "react": "^18",
     "react-dom": "^18",
     "web-vitals": "^3.5.0"
