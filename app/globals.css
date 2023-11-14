@@ -23,13 +23,21 @@
 }
 
 .App {
-  display: grid;
+  display: flex;
   place-content: center;
   margin-top: 100px;
   margin-bottom: 100px;
   height: 100%;
   grid-template-columns: auto 220px;
 }
+/* .App {
+  display: grid;
+  place-content: center;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  height: 100%;
+  grid-template-columns: auto 220px;
+} */
 
 body::-webkit-scrollbar {
   display: none;
@@ -48,4 +56,35 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+@media screen and (max-width: 1020px) {
+  :root{
+    --tile-size : 90px;
+  }
+}
+@media screen and (max-width: 920px) {
+  :root{
+    --tile-size : 70px;
+  }
+}
+@media screen and (max-width: 800px) {
+  :root{
+    --tile-size : 60px;
+  }
+}
+@media screen and (max-width: 720px) {
+  :root{
+    --tile-size : 50px;
+  }
+}
+@media screen and (max-width: 640px) {
+  :root{
+    --tile-size : 45px;
+  }
+}
+@media screen and (max-width: 450px) {
+  :root{
+    --tile-size : 30px;
+  }
 }

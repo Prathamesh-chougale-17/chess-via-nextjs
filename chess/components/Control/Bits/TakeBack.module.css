@@ -6,3 +6,28 @@
     margin: 10px;
     font-size: 1.1em;
 } 
+
+@media screen and (max-width: 900px) {
+    .takeback{
+        padding: 9px 27px;
+        margin: 9px;
+    }
+}
+@media screen and (max-width: 720px) {
+    .takeback{
+        padding: 8px 24px;
+        margin: 8px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .takeback{
+        padding: 6px 18px;
+        margin: 7px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .takeback{
+        padding: 5px 12px;
+        margin: 5px;
+    }
+}

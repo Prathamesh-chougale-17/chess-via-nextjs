@@ -1,7 +1,31 @@
 .control {
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    /* width: 100px; */
+    /* padding: 10px; */
     text-align: center;
     height: calc(8*var(--tile-size));
 }
+/* @media screen and (max-width: 900px) {
+    .control{
+        padding: ;
+    }
+}
+@media screen and (max-width: 720px) {
+    .control{
+        padding: 8px 24px;
+        margin: 8px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .control{
+        padding: 6px 18px;
+        margin: 7px;
+    }
+}
+@media screen and (max-width: 450px) {
+    .control{
+        padding: 5px 12px;
+        margin: 5px;
+    }
+} */
