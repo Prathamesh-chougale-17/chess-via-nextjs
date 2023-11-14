@@ -1,0 +1,42 @@
+.tile{
+    position: relative;
+}
+.tile--light {
+    background-color: var(--light-tile);
+}
+.tile--dark {
+    background-color: var(--dark-tile);
+}
+.highlight:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width : calc(.5*var(--tile-size));
+    height : calc(.5*var(--tile-size));
+    background: var(--highlight);
+    border-radius: 50%;
+    left: 25%;
+    top: 25%;
+}
+.attacking:after {
+    display: block;
+    position: absolute;
+    content: '';
+    border: 6px solid var(--highlight);
+    width : calc(var(--tile-size) - 12px);
+    height : calc(var(--tile-size) - 12px);
+    border-radius: 50%;
+    left: 5px;
+    top: 13px;
+}
+.checked:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width :  var(--tile-size);
+    height :  var(--tile-size);
+    background: var(--check);
+    border-radius: 20px;
+    left: 0;
+    top: 0;
+}

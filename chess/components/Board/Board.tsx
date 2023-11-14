@@ -1,5 +1,3 @@
-// import './Board.css'
-// import { useAppContext } from "../../contexts/Context";
 import boardstyle from "./Board.module.css";
 import { getKingPosition } from "../../arbiter/getMoves";
 import arbiter from "../../arbiter/arbiter";
@@ -10,6 +8,7 @@ import Popup from "../Popup/Popup";
 import PromotionBox from "../Popup/PromotionBox/PromotionBox";
 import Ranks from "./Bits/Ranks";
 import Files from "./Bits/Files";
+import "./Board.css";
 
 const Board = () => {
   const ranks = Array(8)
@@ -35,14 +34,15 @@ const Board = () => {
   })();
 
   const getClassName = (i: number, j: number) => {
-    let c = (i + j) % 2 === 0 ? boardstyle.tiledark : boardstyle.tilelight;
+    let c = "tile";
+    c += (i + j) % 2 === 0 ? " tile--dark " : " tile--light ";
     if (appState.candidateMoves?.find((m) => m[0] === i && m[1] === j)) {
-      if (position[i][j]) c += boardstyle.attacking;
-      else c += boardstyle.highlight;
+      if (position[i][j]) c += " attacking";
+      else c += " highlight";
     }
 
     if (checkTile && checkTile[0] === i && checkTile[1] === j) {
-      c += boardstyle.checked;
+      c += " checked";
     }
 
     return c;
@@ -57,10 +57,7 @@ const Board = () => {
           files.map((file, j) => (
             <div
               key={file + "" + rank}
-              // i={i}
-              // j={j}
               className={getClassName(7 - i, j)}
-              // className={}
             ></div>
           ))
         )}

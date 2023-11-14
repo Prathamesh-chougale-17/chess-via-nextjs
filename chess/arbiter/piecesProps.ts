@@ -75,7 +75,7 @@ export interface makeNewMoveProps {
 }
 
 export interface generateCandidatesProps {
-    candidateMoves: string[]//expimental
+    candidateMoves: [number, number][]//expimental
 }
 
 export interface getNewMoveNotationProps {

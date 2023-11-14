@@ -9,7 +9,7 @@ interface AppState {
       file: number;
     };
     position: string[][][];
-    selectedPiece: string;
+    selectedPiece: any;
     turn: string;
     movesList: string[];
     castleDirection: { [key: string]: string };

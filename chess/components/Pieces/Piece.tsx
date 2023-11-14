@@ -15,16 +15,14 @@ const Piece = ({ rank, file, piece }: any) => {
     }, 0);
 
     if (turn === piece[0]) {
-      const candidateMoves = arbiter
-        .getValidMoves({
-          position: currentPosition[currentPosition.length - 1],
-          prevPosition: currentPosition[currentPosition.length - 2],
-          castleDirection: castleDirection[turn],
-          piece,
-          file,
-          rank,
-        })
-        .map((move) => move.join("") as string); // convert [number, number] tuples to strings
+      const candidateMoves = arbiter.getValidMoves({
+        position: currentPosition[currentPosition.length - 1],
+        prevPosition: currentPosition[currentPosition.length - 2],
+        castleDirection: castleDirection[turn],
+        piece,
+        file,
+        rank,
+      });
       dispatch(generateCandidates({ candidateMoves }));
     }
   };
