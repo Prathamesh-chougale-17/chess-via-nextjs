@@ -1,6 +1,7 @@
 import React from "react";
+import Controlcss from "./Control.module.css";
 const Control = ({ children }: { children: React.ReactNode }) => {
-  return <div className="flex flex-col p-3 text-center h-4">{children}</div>;
+  return <div className={Controlcss.control}>{children}</div>;
 };
 
 export default Control;

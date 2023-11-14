@@ -6,7 +6,7 @@ const MovesList = () => {
   } = useAppContext();
 
   return (
-    <div className="flex flex-row flex-1 flex-wrap content-center overflow-auto font-medium">
+    <div className={Movelist.moveslist}>
       {movesList.map((move, i) => (
         <div
           className={Movelist.moves}

@@ -34,7 +34,7 @@ export const createPosition = () => {
 }
 
 export const copyPosition = (position: string[][]) => {
-    const newPosition =
+    const newPosition: string[][] =
         new Array(8).fill('').map(x => new Array(8).fill(''))
 
     for (let rank = 0; rank < position.length; rank++) {

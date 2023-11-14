@@ -18,8 +18,7 @@ import { getNewMoveNotation } from "../../support/helper";
 
 const Pieces = () => {
   const { appState, dispatch } = useAppContext();
-  const currentPosition: string[][] =
-    appState.position[appState.position.length - 1];
+  const currentPosition = appState.position[appState.position.length - 1];
 
   const ref = useRef<HTMLDivElement>(null);
 

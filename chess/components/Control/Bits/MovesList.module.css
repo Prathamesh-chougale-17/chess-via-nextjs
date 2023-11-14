@@ -1,3 +1,22 @@
+.moveslist {
+    display: flex;
+    flex-direction: row;
+    color: var(--dark-tile  );
+    flex: 1 1 0%;
+    flex-wrap: wrap;
+    flex: start;
+    overflow: auto;
+    font-size: 1.1em;
+}
+
+.moves{
+    flex-basis: 35%;
+    padding-left: 15%;
+    text-align: left;
+    position: relative;
+    padding-bottom: 5px;
+}
+
 .moves[data-number]:nth-child(odd)::before {
     content: attr(data-number);
     position: absolute;
