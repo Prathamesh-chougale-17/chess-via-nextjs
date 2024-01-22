@@ -6,7 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --tile-size : 100px;
+  --tile-size : 80px;
   --light-tile : #F0D8B6;
   --dark-tile : #B48764;
   --bg-color : #202020;
@@ -41,12 +41,7 @@
 
 body::-webkit-scrollbar {
   display: none;
-}
-body {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-}
- 
+} 
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -56,13 +51,11 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
 }
 
-@media screen and (max-width: 1020px) {
-  :root{
-    --tile-size : 90px;
-  }
-}
+
 @media screen and (max-width: 920px) {
   :root{
     --tile-size : 70px;
