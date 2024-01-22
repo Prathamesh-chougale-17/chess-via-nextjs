@@ -7,20 +7,18 @@
     align-content: flex-start;
     overflow: auto;
     font-size: 1.1em;
+    padding: 0 0 0 0;
+    
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 
 }
 .moveslist::-webkit-scrollbar {
     display: none;
 }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-.moveslist {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
 .moves{
     flex-basis: 35%;
-    padding-left: 15%;
+    padding-left: 30px;
     text-align: left;
     position: relative;
     padding-bottom: 5px;

@@ -5,6 +5,7 @@
     /* padding: 10px; */
     text-align: center;
     height: calc(8*var(--tile-size));
+    width: 250px;
 }
 /* @media screen and (max-width: 900px) {
     .control{
